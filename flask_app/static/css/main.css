@@ -1,0 +1,208 @@
+/* same font for all text */
+a, p, body, h1, h2, h3, h4, h5, h6, button {
+  font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+
+
+a {
+  color: #F0EAD6;
+}
+
+a:hover{
+  color: #F0EAD6;
+}
+
+.gray {
+  color:#666666;
+}
+
+.pad{
+    padding:0.5em;
+}
+
+small {
+  color: #e2e3e4;
+}
+img .pad{
+  width:auto;
+  height: auto;
+}
+
+.account-user-img{
+  height: 125px;
+  width: 125px;
+  margin-right: 20px;
+  margin-bottom: 16px;
+}
+
+body {
+  background: #fafafa;
+  margin-top: 5rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #444444;
+}
+
+p {
+  white-space: pre-line;
+}
+
+.header-image{
+  height: 50px;
+  width: 50px;
+}
+
+
+ul {
+  margin: 0;
+}
+
+.bg-nav-color {
+  background-color: #191919;
+}
+
+/* .site-header .navbar-nav .nav-link {
+  color: #F0EAD6;
+} */
+
+.site-header .navbar-nav .nav-link:hover {
+  color: #ffffff;
+}
+
+.site-header .navbar-nav .nav-link.active {
+  font-weight: 500;
+}
+
+.box-content-section {
+  background: #dddddd;
+  padding: 10px 20px;
+  border: 1px solid #161616;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.bio-image {
+  height: 120px;
+  width: 120px;
+  margin-right: 16px;
+}
+
+.blog-content-section {
+  padding: 5px 10px;
+  border: 1px solid #161616;
+  border-radius: 2px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.article-title {
+  color: #444444;
+}
+
+a.article-title:hover {
+  color: #428bca;
+  text-decoration: none;
+}
+
+.article-content {
+  white-space: pre-line;
+}
+
+.article-img {
+  height: 65px;
+  width: 65px;
+  margin-right: 16px;
+}
+
+.article-metadata {
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #e3e3e3
+}
+
+.article-metadata a:hover {
+  color: #333;
+  text-decoration: none;
+}
+
+.article-svg {
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+}
+
+.profile-img {
+  height: 125px;
+  width: 125px;
+  margin-right: 20px;
+  margin-bottom: 16px;
+}
+
+.profile-heading {
+  font-size: 2.5rem;
+}
+
+
+
+
+/* MODALS  */
+.portfolio-modal .modal-content {
+  padding: 50px 0;
+  text-align: center;
+}
+
+
+.portfolio-modal .modal-content p {
+  margin-bottom: 20px;
+  white-space: pre-line;
+}
+
+
+
+.portfolio-modal .close-modal {
+  position:absolute;
+  background-color: transparent;
+
+}
+
+.portfolio-modal .close-modal .lr .rl {
+  /* Safari and Chrome */
+  z-index: 1052;
+  width: 1px;
+  height: 75px;
+  /* IE 9 */
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+  background-color: #99ccff;
+}
+
+.portfolio-modal .close-modal .lr {
+  /* Safari and Chrome */
+  z-index: 1051;
+  width: 1px;
+  height: 75px;
+  margin-left: 35px;
+  /* IE 9 */
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  background-color: #99ccff;
+}
+
+.portfolio-modal .modal-content img {
+  margin-bottom: 30px;
+}
+
+.portfolio-modal .modal-content button {
+  cursor: pointer;
+}
+
+.portfolio-modal .close-modal {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  width: 75px;
+  height: 75px;
+  cursor: pointer;
+  background-color: transparent;
+}

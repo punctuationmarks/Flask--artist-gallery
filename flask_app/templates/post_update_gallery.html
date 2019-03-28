@@ -1,0 +1,116 @@
+{% extends "layout.html"%}
+{% block content %}
+<div class="content-section">
+ <form method="POST" action="" enctype="multipart/form-data">
+     {{ form.hidden_tag() }}
+     <fieldset class="form-group">
+         <legend class="border-bottom mb-4"> {{ legend }} </legend>
+         <div class="container">
+           <p class="text-left text-mute">This is where you can post things for sale.
+             <ul class="list-group">
+               <li class="list-group-item">almost identical layout as the portfolio</li>
+               <li class="list-group-item">but concept is to remove/edit each once being sold</li>
+               <li class="list-group-item">price is optional and allows text (e.g. 'email for more info')</li>
+             </ul>
+           </p>
+         </div>
+
+         <!-- title  field  -->
+         <div class="form-group">
+             {{ form.title.label(class="form-control-label") }}
+
+             {% if form.title.errors %}
+
+                   {{ form.title(class="form-control form-control-lg is-invalid") }}
+
+                     <div class="invalid-feedback">
+                       {% for error in form.title.errors %}
+                         <span> {{ error }} </span>
+                       {% endfor %}
+                     </div>
+
+               {% else %}
+
+                   {{ form.title(class="form-control form-control-lg") }}
+
+               {% endif %}
+
+         </div>
+
+         <!-- image upload field -->
+
+         <div class="form-group">
+
+            {{ form.gallery_picture.label() }}
+
+            {{ form.gallery_picture(class="form-control-file") }}
+
+            {% if form.gallery_picture.errors %}
+
+                {% for error in form.gallery_picture.errors %}
+                    <span class="text-danger">{{ error }}</span><br />
+                {% endfor %}
+
+            {% endif %}
+        </div>
+
+         <!-- module_content field -->
+         <div class="form-group">
+
+             {{ form.content.label(class="form-control-label") }}
+
+               {% if form.content.errors %}
+
+                 {{ form.content(class="form-control form-control-lg is-invalid") }}
+
+                   <div class="invalid-feedback">
+                     {% for error in form.content.errors %}
+
+                         <span> {{ error }} </span>
+
+                     {% endfor %}
+
+                   </div>
+
+               {% else %}
+
+                   {{ form.content(class="form-control form-control-lg") }}
+
+               {% endif %}
+
+         </div>
+
+<!-- Price field -->
+         <div class="form-group">
+             {{ form.price.label(class="form-control-label") }}
+
+             {% if form.price.errors %}
+
+                   {{ form.price(class="form-control form-control-lg is-invalid") }}
+
+                     <div class="invalid-feedback">
+                       {% for error in form.price.errors %}
+                         <span> {{ error }} </span>
+                       {% endfor %}
+                     </div>
+
+               {% else %}
+
+                   {{ form.price(class="form-control form-control-lg") }}
+
+               {% endif %}
+
+         </div>
+
+     </fieldset>
+
+     <!-- have the submit button outside of the fieldset -->
+     <div class="form-group">
+         {{ form.submit(class="btn btn-outline") }}
+     </div>
+
+    </form>
+
+</div>
+
+{% endblock content %}

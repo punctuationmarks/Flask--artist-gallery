@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block blog %}
+    {% for post in posts.items %}
+        <article class="media content-section">
+          <div class="media-body mt-4 mb-2">
+            <div class="article-metadata">
+              <!-- <a class="mr-2 mt-4" href="{{ url_for('blog_bp.user_posts', username=post.author.username) }}"> {{ post.author.username }}</a> -->
+
+              <!-- This is if a user requests to have the date shown -->
+              <!-- <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small> -->
+
+            </div>
+            <h2><a class="article-title" href="{{ url_for('blog_bp.blog_by_id', post_id=post.id)}}">{{ post.title }}</a></h2>
+            <p class="article-content">{{ post.content|truncate(length=300, killwords=True) }}  </p>
+              {% if post.content|length > 300 %}
+              <a class="gray" href="{{ url_for('blog_bp.blog_by_id', post_id=post.id)}}">(...read more)</a>
+              {% else %}
+              {% endif %}
+          </div>
+        </article>
+    {% endfor %}
+
+    <!-- pagination logic -->
+    <div class="mt-5">
+    {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+          {% if page_num %}
+                {% if posts.page == page_num %}
+                  <a class="btn btn-info mb-4" href="{{ url_for('blog_bp.blog', page=page_num) }}">{{ page_num }}</a>
+                {% else %}
+                  <a class="btn btn-outline-info mb-4" href="{{ url_for('blog_bp.blog', page=page_num) }}">{{ page_num }}</a>
+                {% endif %}
+          {% else %}
+                  ...
+          {% endif %}
+    {% endfor %}
+    </div>
+
+    {% if current_user.is_authenticated %}
+      <div>
+        <a class="btn btn-outline-info btn-md mt-1 mb-1" href="{{ url_for('blog_bp.new_blog_post') }}">New Blog Post</a>
+      </div>
+    {% endif %}
+
+{% endblock blog %}

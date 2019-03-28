@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+
+    <div class="container">
+        {% if home_update %}
+        <h1 class="text-center">{{ home_update.title }}</h1>
+          <img class="img-responsive mx-auto d-block" style="width: 600px; max-width:75%" src="{{ url_for('static', filename='home_photos/' + home_update.main_photo )}}" alt=""/>
+       <hr>
+        <p class="text-justify">{{ home_update.content }}</p>
+      </div>
+        {% else %}
+        <div class="container">
+          <h1 class="text-center">Artist Home Page Title</h1>
+          <img class="img-responsive mx-auto d-block" style="width: 600px; max-width:75%" src="{{ url_for('static', filename='home_photos/' + 'default.jpg' )}}" alt=""/>
+       <hr>
+          <p class="text-justify">Ambitioni dedisse scripsisse iudicaretur. 'Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum.</p>
+        </div>
+        {% endif %}
+
+
+      {% if current_user.is_authenticated %}
+        <div>
+          <a class="btn btn-outline-secondary btn-md mt-1 mb-1" href="{{ url_for('main_bp.update_home_page') }}">Update Home Page</a>
+        </div>
+      {% endif %}
+</div>
+
+{% endblock content %}

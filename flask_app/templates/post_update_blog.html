@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="content-section">
+ <form method="POST" action="">
+     {{ form.hidden_tag() }}
+     <fieldset class="form-group">
+         <legend class="border-bottom mb-4"> {{ legend }} </legend>
+
+         <div class="container">
+           <p class="text-left text-mute">This is where you can post thoughts, ideas, whatever text you'd like.
+             <ul class="list-group">
+               <li class="list-group-item">-very basic 'blog'</li>
+               <li class="list-group-item">-no date is shown to visitors so you don't have to worry about keeping up with it</li>
+               <li class="list-group-item">-title and content (body) must be filled out</li>
+             </ul>
+           </p>
+         </div>
+
+         <!-- title  field  -->
+         <div class="form-group">
+             {{ form.title.label(class="form-control-label") }}
+
+             {% if form.title.errors %}
+
+                   {{ form.title(class="form-control form-control-lg is-invalid") }}
+
+                     <div class="invalid-feedback">
+                       {% for error in form.title.errors %}
+                         <span> {{ error }} </span>
+                       {% endfor %}
+                     </div>
+
+               {% else %}
+
+                   {{ form.title(class="form-control form-control-lg") }}
+
+               {% endif %}
+
+         </div>
+
+         <!-- content field -->
+         <div class="form-group">
+
+             {{ form.content.label(class="form-control-label") }}
+
+               {% if form.content.errors %}
+
+                 {{ form.content(class="form-control form-control-lg is-invalid") }}
+
+                   <div class="invalid-feedback">
+                     {% for error in form.content.errors %}
+
+                         <span> {{ error }} </span>
+
+                     {% endfor %}
+
+                   </div>
+
+               {% else %}
+
+                   {{ form.content(class="form-control form-control-lg") }}
+
+               {% endif %}
+
+         </div>
+
+
+
+     </fieldset>
+
+     <!-- have the submit button outside of the fieldset -->
+     <div class="form-group">
+         {{ form.submit(class="btn btn-outline-info") }}
+     </div>
+
+    </form>
+
+</div>
+{% endblock content %}

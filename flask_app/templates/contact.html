@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block contact_us %}
+<div class="container">
+<hr>
+<!-- CONTACT -->
+<!-- this looks like shit fix it -->
+
+<div class="container">
+  <!-- leave action blank. Class for styling-->
+  <form id="contact"  action="" method="POST">
+      {{ form.hidden_tag() }}
+      <fieldset class="form-group">
+        <legend class="col-lg-12 text-center"> Contact Us:</legend>
+
+      <!-- CUSTOMER ENTERED NAME  -->
+
+      <div class="form-group center">
+
+        {{ form.customer_name.label(class="form-control-label") }}
+        {{ form.customer_name(class="form-control form-control-lg") }}
+
+      </div>
+
+      <!-- CUSTOMER ENTERED EMAIL ADDRESS  -->
+
+      <div class="form-group center">
+        {{ form.customer_email.label(class="form-control-label") }}
+        {{ form.customer_email(class="form-control form-control-lg") }}
+      </div>
+
+      <!-- CUSTOMER ENTERED PHONE  -->
+
+      <div class="form-group centered">
+        {{ form.customer_phone.label(class="form-control-label") }}
+        {{ form.customer_phone(class="form-control form-control-lg") }}
+      </div>
+
+      <!-- CUSTOMER ENTERED MESSAGE -->
+
+      <div class="form-group">
+        {{ form.customer_message.label(class="form-control-label") }}
+          {{ form.customer_message(class="form-control form-control-lg") }}
+
+      </div>
+
+    </fieldset>
+
+    <!-- SUBMIT FORM SUBMISSION BUTTON  -->
+
+    <div class="form-group text-center">
+      {{ form.customer_submit(class="btn btn-primary btn-xl text-center") }}
+    </div>
+
+  </form>
+
+</div>
+</div>
+{% endblock contact_us %}

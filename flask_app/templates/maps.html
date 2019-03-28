@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1 class="text-left"><a href="">Downtown Indianapolis</a></h1>
+<p class="text-left">We're located at <a href="https://www.google.com/maps/place/Soldiers+and+Sailors+Monument/@39.7675304,-86.1593676,17.63z/data=!4m12!1m6!3m5!1s0x886b50bc7d454c59:0xca61d4c2ac2b8fe0!2sCircle+Centre+Mall!8m2!3d39.7663047!4d-86.1593239!3m4!1s0x886b50bc261a1291:0x4efb96966bb31be9!8m2!3d39.7685204!4d-86.1580347" target="_blank">downtown Indianapolis</a></p>
+<p class="text-left">Phone: (317)000-0000</p>
+<p>Appointments and walk-ins welcomed</p>
+{% with %}
+    {% set location=(39.768579, -86.158018) %}
+    {% set style="width:400;height:500px;"%}
+
+    {{
+    googlemap(
+        "simple-map",
+        location.0, location.1,
+        markers=[location,],
+        style=style
+        )
+    }}
+
+{% endwith %}
+
+{% endblock content %}

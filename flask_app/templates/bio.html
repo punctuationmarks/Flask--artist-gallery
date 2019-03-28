@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="d-flex">
+
+{% if bio_update %}
+<div>
+  <img class="rounded-circle bio-image" src="{{ url_for('static', filename='bio_photos/' + bio_update.bio_photo) }}">
+</div>
+<div>
+  <h1 class="text-left">{{ bio_update.title }}</h1>
+  <p class="text-muted text-justify">{{ bio_update.content }}</p>
+</div>
+{% else %}
+<div>
+  <h1 class="text-left">Bio</h1>
+  <p class="text-muted text-justify">Ambitioni dedisse scripsisse iudicaretur. 'Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum.</p>
+</div>
+{% endif %}
+</div>
+
+
+{% if current_user.is_authenticated %}
+  <div class="container mt-4">
+    <a class="btn btn-outline-secondary btn-md mt-1 mb-1" href="{{ url_for('main_bp.update_bio_page') }}">Update</a>
+  </div>
+{% endif %}
+
+
+{% endblock content %}

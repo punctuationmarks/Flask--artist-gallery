@@ -1,0 +1,97 @@
+{% extends "layout.html"%}
+{% block content %}
+<div class="content-section">
+ <form method="POST" action="" enctype="multipart/form-data">
+     {{ form.hidden_tag() }}
+     <fieldset class="form-group">
+         <legend class="border-bottom mb-4"> {{ legend }} </legend>
+         <div class="containter">
+         <p class="text-left text-mute">This is where you can post things you've made</p>
+           <ul class="list-group">
+             <li class="list-group-item">-produces a 3x3 grid per page and the pages continue indefinitely</li>
+             <li class="list-group-item">-can add optional title or paragraph (only shown on module popup)</li>
+           </ul>
+           <p>
+           If you want some "blank" space (for spacing some design other than 3x3 of images, you can add a square of <a href="https://duckduckgo.com/?q=%23fafafa&t=ffab&ia=answer" target="blank_">#fafafa.png</a> which is the same color as the background)
+         </p>
+       </div>
+
+         <!-- title  field  -->
+         <div class="form-group">
+             {{ form.title.label(class="form-control-label") }}
+
+             {% if form.title.errors %}
+
+                   {{ form.title(class="form-control form-control-lg is-invalid") }}
+
+                     <div class="invalid-feedback">
+                       {% for error in form.title.errors %}
+                         <span> {{ error }} </span>
+                       {% endfor %}
+                     </div>
+
+               {% else %}
+
+                   {{ form.title(class="form-control form-control-lg") }}
+
+               {% endif %}
+
+         </div>
+
+         <!-- image upload field -->
+
+         <div class="form-group">
+
+            {{ form.portfolio_picture.label() }}
+
+            {{ form.portfolio_picture(class="form-control-file") }}
+
+            {% if form.portfolio_picture.errors %}
+
+                {% for error in form.portfolio_picture.errors %}
+                    <span class="text-danger">{{ error }}</span><br />
+                {% endfor %}
+
+            {% endif %}
+        </div>
+
+         <!-- module_content field -->
+         <div class="form-group">
+
+             {{ form.content.label(class="form-control-label") }}
+
+               {% if form.content.errors %}
+
+                 {{ form.content(class="form-control form-control-lg is-invalid") }}
+
+                   <div class="invalid-feedback">
+                     {% for error in form.content.errors %}
+
+                         <span> {{ error }} </span>
+
+                     {% endfor %}
+
+                   </div>
+
+               {% else %}
+
+                   {{ form.content(class="form-control form-control-lg") }}
+
+               {% endif %}
+
+         </div>
+
+
+
+     </fieldset>
+
+     <!-- have the submit button outside of the fieldset -->
+     <div class="form-group">
+         {{ form.submit(class="btn btn-outline") }}
+     </div>
+
+    </form>
+
+</div>
+
+{% endblock content %}

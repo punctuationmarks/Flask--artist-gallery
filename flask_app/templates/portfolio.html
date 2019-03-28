@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+
+{% block portfolio %}
+<div class="container">
+  {% if page_update %}
+
+  <h1 class="font-weight-light text-center text-lg-left mt-4 mb-0">{{ page_update.title }}</h1>
+      {% if page_update.subtitle %}
+            <p class="text-muted text-center">
+              {{ page_update.subtitle }}
+            </p>
+      {% endif %}
+
+        <hr class="mt-4 mb-5">
+  {% else %}
+        <h1 class="font-weight-light text-center text-lg-left mt-4 mb-0">Portfolio</h1>
+        <hr class="mt-4 mb-5">
+  {% endif %}
+
+  <div class="row text-center text-lg-left">
+
+    {% for post in posts.items %}
+        <div class="col-lg-3 col-md-4 col-6">
+          <a class="d-block mb-4 h-100" data-toggle="modal" href="#portfolio_popup_{{ post.id }}">
+                <div class="portfolio-hover">
+                <div class="portfolio-hover-content">
+            </div>
+            </div>
+                <img class="img-fluid img-thumbnail" src="{{ url_for('static', filename='portfolio_pics/' + post.portfolio_picture )}}" alt="">
+              </a>
+        </div>
+    {% endfor %}
+
+
+  </div>
+</div>
+
+
+{% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+  {% if page_num %}
+    {% if posts.page == page_num %}
+      <a class="btn btn-info mb-4" href="{{ url_for('portfolio_bp.portfolio', page=page_num) }}">{{ page_num }}</a>
+    {% else %}
+      <a class="btn btn-outline-info mb-4" href="{{ url_for('portfolio_bp.portfolio', page=page_num) }}">{{ page_num }}</a>
+    {% endif %}
+  {% else %}
+    ...
+  {% endif %}
+{% endfor %}
+
+{% if current_user.is_authenticated %}
+  <div>
+    <a class="btn btn-outline-secondary btn-md mt-1 mb-1" href="{{ url_for('main_bp.update_portfolio') }}">Update Portfolio Title and Subtitle</a>
+    <a class="btn btn-outline-info btn-md mt-1 mb-1" href="{{ url_for('portfolio_bp.new_portfolio_post') }}">New Portfolio Post</a>
+  </div>
+{% endif %}
+
+
+  {% for post in posts.items %}
+      <div class="portfolio-modal modal fade" id="portfolio_popup_{{ post.id }}" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">X</div>
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-8 mx-auto">
+                  <div class="modal-body">
+                    <!-- Project Details Go Here -->
+                    <h3>{{ post.title }}</h3>
+                    <p class="text-mute">{{ post.content }}</p>
+                    <img class="img-fluid d-block mx-auto" src="{{ url_for('static', filename='portfolio_pics/' + post.portfolio_picture )}}" alt="">
+
+                    {% if post.author == current_user %}
+                      <div class="container mt-2 mb-2">
+                        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('portfolio_bp.update_portfolio_post', post_id=post.id) }}">Update</a>
+                        <a class="btn btn-danger btn-sm mt-1 mb-1" href="{{ url_for('portfolio_bp.portfolio_by_id', post_id=post.id) }}">Delete</a>
+                      </div>
+                    {% endif %}
+
+                    <button class="btn" data-dismiss="modal" type="button">
+                      <i class="fas fa-times"></i>
+                      Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+
+{% endblock portfolio %}
