@@ -15,3 +15,5 @@ $ python3 -m venv venv # create virtual environment
 $ pip3 install -r requirements.rxr # installing all requirements recursively
 $ python3 run.py flask_app/
 ```
+
+Here's a [https://flask-artist-crud.herokuapp.com/](heroku) deployed version if you want to check it out. 
