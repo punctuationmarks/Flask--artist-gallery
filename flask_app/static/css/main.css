@@ -1,34 +1,43 @@
 /* same font for all text */
-a, p, body, h1, h2, h3, h4, h5, h6, button {
-  font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+a,
+p,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button {
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
 }
-
 
 a {
   color: #F0EAD6;
 }
 
-a:hover{
+a:hover {
   color: #F0EAD6;
 }
 
 .gray {
-  color:#666666;
+  color: #666666;
 }
 
-.pad{
-    padding:0.5em;
+.pad {
+  padding: 0.5em;
 }
 
 small {
   color: #e2e3e4;
 }
-img .pad{
-  width:auto;
+
+img .pad {
+  width: auto;
   height: auto;
 }
 
-.account-user-img{
+.account-user-img {
   height: 125px;
   width: 125px;
   margin-right: 20px;
@@ -40,7 +49,12 @@ body {
   margin-top: 5rem;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: #444444;
 }
 
@@ -48,7 +62,7 @@ p {
   white-space: pre-line;
 }
 
-.header-image{
+.header-image {
   height: 50px;
   width: 50px;
 }
@@ -161,7 +175,7 @@ a.article-title:hover {
 
 
 .portfolio-modal .close-modal {
-  position:absolute;
+  position: absolute;
   background-color: transparent;
 
 }
