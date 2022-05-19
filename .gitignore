@@ -5,11 +5,17 @@
 
 *.swp
 
+./flask_app/site.db
+./flask_app/static/bio_photos/*
+./flask_app/static/galler_pics/*
+./flask_app/static/home_photos/*
+./flask_app/static/portfolio_pics/*
+./flask_app/static/profile_pics/*
+
 ### Flask ###
 instance/*
 !instance/.gitignore
 .webassets-cache
-./flask_app/site.db
 *.db
 site.db
 
