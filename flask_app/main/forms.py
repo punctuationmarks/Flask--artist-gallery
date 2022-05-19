@@ -9,7 +9,7 @@ from wtforms.validators import DataRequired, Length, Email, ValidationError
 class BioPageForm(FlaskForm):
     title = StringField('Title for Bio Page ', validators=[DataRequired()])
     content = TextAreaField('Body of Bio Page ', validators=[DataRequired()])
-    bio_photo = FileField('Bio Photo (not required) ', validators=[FileAllowed(['jpg', 'png'])])
+    bio_photo = FileField('Bio Photo', validators=[DataRequired(), FileAllowed(['jpg', 'png'])])
     submit = SubmitField('Post Bio Page')
 
 ### Home Page Form ###

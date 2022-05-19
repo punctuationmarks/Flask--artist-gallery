@@ -56,7 +56,7 @@ class Home_Post(db.Model):
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     title = db.Column(db.String(100), nullable=False, default="Home")
     content = db.Column(db.Text, nullable=False, default="mi bezonas suoj")
-    main_photo = db.Column(db.String(40), nullable=False, default="home_photos/default.jpg")
+    main_photo = db.Column(db.String(40), nullable=False, default="shared_images/home_photos.jpg")
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
 
@@ -68,7 +68,7 @@ class Bio_Post(db.Model):
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     title = db.Column(db.String(100), nullable=False, default="Bio")
     content = db.Column(db.Text, nullable=False, default="mi bezonas suoj")
-    bio_photo = db.Column(db.String(40), nullable=True, default="bio_photos/default.jpg")
+    bio_photo = db.Column(db.String(40), nullable=True, default="shared_images/bio_photos.jpg")
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
     def __repr__(self):
@@ -112,7 +112,7 @@ class Portfolio_Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     title = db.Column(db.String(100), nullable=True)
-    portfolio_picture = db.Column(db.String(30), nullable=False, default="default.jpg")
+    portfolio_picture = db.Column(db.String(30), nullable=False, default="shared_images/default.jpg")
     content = db.Column(db.Text, nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
