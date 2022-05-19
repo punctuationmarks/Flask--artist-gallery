@@ -12,10 +12,11 @@ The design of the app is very modular, similar to how Django would structure it'
 To have it run out of the box, you'll need to add your specific enviornment variables in /config.py
 
 To install and develop on local machine:
+
 ```
 $ python3 -m venv venv # create virtual environment, named "venv"
 $ source venv/bin/activate # activating the virtual environment
-$ pip3 install -r requirements.rxr # installing all requirements recursively
+$ pip3 install -r requirements.txt # installing all requirements recursively
 $ python3 run.py flask_app/ # running the app locally
 ```
 

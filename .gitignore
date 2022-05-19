@@ -9,6 +9,8 @@
 instance/*
 !instance/.gitignore
 .webassets-cache
+./flask_app/site.db
+*.db
 site.db
 
 ### Flask.Python Stack ###
