@@ -9,14 +9,14 @@ from wtforms.validators import DataRequired, Length, Email, ValidationError
 class BioPageForm(FlaskForm):
     title = StringField('Title for Bio Page ', validators=[DataRequired()])
     content = TextAreaField('Body of Bio Page ', validators=[DataRequired()])
-    bio_photo = FileField('Bio Photo', validators=[DataRequired(), FileAllowed(['jpg', 'png'])])
+    bio_photo = FileField('Bio Photo', validators=[DataRequired(), FileAllowed(['jpeg', 'jpg', 'png'])])
     submit = SubmitField('Post Bio Page')
 
 ### Home Page Form ###
 class HomePageForm(FlaskForm):
     title = StringField('Title for Home Page', validators=[DataRequired()])
     content = TextAreaField('Body of Home Page', validators=[DataRequired()])
-    main_photo = FileField('Main Background Photo', validators=[DataRequired(), FileAllowed(['jpg', 'png'])])
+    main_photo = FileField('Main Background Photo', validators=[DataRequired(), FileAllowed(['jpeg', 'jpg', 'png'])])
     submit = SubmitField('Post Home Page')
 
 

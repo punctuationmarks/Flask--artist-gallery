@@ -3,8 +3,6 @@
 # Edit at https://www.gitignore.io/?templates=venv,linux,flask,python
 
 
-*.swp
-
 ./flask_app/site.db
 ./flask_app/static/bio_photos/*
 ./flask_app/static/galler_pics/*
@@ -26,6 +24,7 @@ instance/*
 .webassets-cache
 *.db
 site.db
+*.swp
 
 ### Flask.Python Stack ###
 # Byte-compiled / optimized / DLL files
