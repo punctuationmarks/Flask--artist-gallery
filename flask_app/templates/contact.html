@@ -1,10 +1,10 @@
 {% extends "layout.html" %}
 
+<!-- this should be extended to use a different provider than Google -->
+
 {% block contact_us %}
 <div class="container">
 <hr>
-<!-- CONTACT -->
-<!-- this looks like shit fix it -->
 
 <div class="container">
   <!-- leave action blank. Class for styling-->
@@ -13,8 +13,6 @@
       <fieldset class="form-group">
         <legend class="col-lg-12 text-center"> Contact Us:</legend>
 
-      <!-- CUSTOMER ENTERED NAME  -->
-
       <div class="form-group center">
 
         {{ form.customer_name.label(class="form-control-label") }}
@@ -22,21 +20,15 @@
 
       </div>
 
-      <!-- CUSTOMER ENTERED EMAIL ADDRESS  -->
-
       <div class="form-group center">
         {{ form.customer_email.label(class="form-control-label") }}
         {{ form.customer_email(class="form-control form-control-lg") }}
       </div>
 
-      <!-- CUSTOMER ENTERED PHONE  -->
-
       <div class="form-group centered">
         {{ form.customer_phone.label(class="form-control-label") }}
         {{ form.customer_phone(class="form-control form-control-lg") }}
       </div>
-
-      <!-- CUSTOMER ENTERED MESSAGE -->
 
       <div class="form-group">
         {{ form.customer_message.label(class="form-control-label") }}

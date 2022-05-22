@@ -143,4 +143,4 @@ class Gallery_Post(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
     def __repr__(self):
-        return f"Portfolio_Post('{self.title}', '{self.portfolio_picture}', '{self.date_posted}')"
+        return f"Gallery_Post('{self.title}', '{self.gallery_picture}', '{self.date_posted}')"

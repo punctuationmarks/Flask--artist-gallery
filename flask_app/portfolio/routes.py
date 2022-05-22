@@ -10,8 +10,9 @@ from flask_login import  current_user, login_required
 
 portfolio_bp = Blueprint('portfolio_bp', __name__)
 
-### View the Portfolio ###
+### View the Portfolio, currently user needs to be logged in, remove if having this feature open to the public ###
 @portfolio_bp.route("/portfolio")
+@login_required
 def portfolio():
     page_update = Portfolio_Page_Update.query.order_by(Portfolio_Page_Update.date_posted.desc()).first()
     page = request.args.get('page', 1, type=int)

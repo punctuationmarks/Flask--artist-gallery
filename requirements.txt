@@ -6,7 +6,6 @@ dnspython==2.0.0
 email-validator==1.1.2
 Flask==2.0.0
 Flask-Bcrypt==0.7.1
-flask-googlemaps==0.4.0
 Flask-Login==0.5.0
 Flask-Mail==0.9.1
 Flask-SQLAlchemy==2.4.4

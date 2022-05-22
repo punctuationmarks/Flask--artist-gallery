@@ -6,6 +6,6 @@ from wtforms.validators import DataRequired, ValidationError
 ### POSTING FORMS ###
 class PostPortfolioForm(FlaskForm):
     title = StringField('Title')
-    portfolio_picture = FileField('Upload Image', validators=[DataRequired(), FileAllowed(['jpg', 'png'])])
+    portfolio_picture = FileField('Upload Image', validators=[DataRequired(), FileAllowed(['jpeg', 'jpg', 'png'])])
     content = TextAreaField('About Paragraph')
     submit = SubmitField('Post')

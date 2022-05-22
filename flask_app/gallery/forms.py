@@ -6,7 +6,7 @@ from wtforms.validators import DataRequired, ValidationError
 ### POSTING FORMS ###
 class PostGalleryForm(FlaskForm):
     title = StringField('Title')
-    gallery_picture = FileField('Upload Image', validators=[DataRequired(), FileAllowed(['jpg', 'png'])])
+    gallery_picture = FileField('Upload Image', validators=[DataRequired(), FileAllowed(['jpeg', 'jpg', 'png'])])
     content = TextAreaField('About Paragraph')
     price = StringField('How much?')
     submit = SubmitField('Post')

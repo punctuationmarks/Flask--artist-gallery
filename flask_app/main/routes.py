@@ -1,29 +1,16 @@
 from flask import render_template, url_for, flash, redirect, request, abort, Blueprint
 from flask_mail import Message
-from flask_app import db, bcrypt, mail, googlemap
-from flask_googlemaps import Map, icons
-from flask_app.main.forms import HomePageForm, BioPageForm, CustomerMessageForm
+from flask_app import db, bcrypt, mail
+from flask_app.main.forms import (HomePageForm, BioPageForm, CustomerMessageForm)
 from flask_app.main.utils import save_home_photo, save_bio_photo
 from flask_app.models import (User, Blog_Post,
                             Home_Post, Bio_Post,
-                            Portfolio_Post, Gallery_Post,
-                            Customer_Message)
-
-# TESTING #
-from flask_app.main.forms import GalleryForm, PortfolioForm
-from flask_app.models import Gallery_Page_Update, Portfolio_Page_Update
-
+                            Gallery_Post, Customer_Message)
+from flask_app.main.forms import GalleryForm
+from flask_app.models import Gallery_Page_Update
 from flask_login import current_user, login_required
 
-
-
-
-
-
 main_bp = Blueprint('main_bp', __name__)
-
-
-
 
 
 @main_bp.route("/")
@@ -64,14 +51,11 @@ def update_home_page():
                             legend='Home Page Edit')
 
 
-
 @main_bp.route("/bio")
 def bio():
     bio_update = Bio_Post.query.order_by(Bio_Post.date_posted.desc()).first()
     return render_template('bio.html', title='Bio', bio_update=bio_update)
 
-
-### Edit bio Page ###
 @main_bp.route("/bio/edit", methods=['GET', 'POST'])
 @login_required
 def update_bio_page():
@@ -103,57 +87,6 @@ def update_bio_page():
                             form=form,
                             legend='Bio Page Edit')
 
-
-""" change this as you please,
-or even have a form so the user can
-update this manually """
-### Map View ###
-@main_bp.route("/maps")
-def map():
-    shop_map = Map(
-        identifier="view-side",
-        lat=39.768579,
-        lng=-86.158018,
-        markers=[(39.768579,-86.158018)]
-    )
-    return render_template('maps.html', shop_map=shop_map)
-
-
-
-
-### CONTACT PAGE ###
-@main_bp.route("/contact", methods=['GET', 'POST'])
-def contact():
-    form = CustomerMessageForm()
-    if form.validate_on_submit():
-        msg = Message('Customer inquisition from your website', sender='cycleincooperation@gmail.com', recipients=['cycleincooperation@gmail.com'])
-        msg.body = f'''
-From: \n\t{form.customer_name.data}
-\nPhone: \n\t{form.customer_phone.data}
-\nEmail: \n\t{form.customer_email.data}
-\nMessage: \n\t{form.customer_message.data}
-'''
-        # sending the message
-        mail.send(msg)
-
-        # add all of this to the database:
-        # time will be stored in UTC format and added automatically
-        customer = Customer_Message(name=form.customer_name.data,
-                                email=form.customer_email.data,
-                                phone=form.customer_phone.data,
-                                message=form.customer_message.data)
-        db.session.add(customer)
-        db.session.commit()
-        flash('Message sent thank you. We will be in touch', 'success')
-        return redirect(url_for('main_bp.home'))
-    else:
-        flash('All fields are required.', 'danger')
-    return render_template('contact.html', form=form)
-
-
-
-
-### Allowing editing of the gallery and portfolio pages ###
 
 @main_bp.route("/gallery/update_gallery", methods=['GET', 'POST'])
 @login_required
